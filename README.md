@@ -42,7 +42,7 @@ Given a CSV (comma-separated values) containing historical Bitcoin trades, we wa
 You will need to create a function that takes a CSV file and the desired period (window size) and outputs the result in JSON format. 
 
 
-## Input format
+### Input format
 
 CSV file `trades.csv` ([http://api.bitcoincharts.com/v1/csv/korbitKRW.csv.gz](http://api.bitcoincharts.com/v1/csv/korbitKRW.csv.gz)) containing *N* trades in the following format:
 
@@ -93,7 +93,7 @@ timestamp,price,size
 
  
 
-## Output format
+### Output format
 
 * JSON Array
 
