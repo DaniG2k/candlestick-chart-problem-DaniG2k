@@ -20,13 +20,24 @@
 
 3. It is okay to use reference language documentation or use an IDE that has code completion features. However it is not acceptable to consult/copy code from any source including a website, book, or friend/colleague to complete these tests.
 
-Given a CSV (comma-separated values) containing historical Bitcoin trades, we want to represent the trades in a [candlestick chart](https://en.wikipedia.org/wiki/Candlestick_chart). In order to do so, the historical data needs to be transformed.
 
- 
+
+## Submission instructions
+
+1. Fork this repository on github
+
+2. Commit and push your changes to your fork on github
+
+3. Submit a pull request to this repository
+
+
+
+## Problem description
+
+Given a CSV (comma-separated values) containing historical Bitcoin trades, we want to represent the trades in a [candlestick chart](https://en.wikipedia.org/wiki/Candlestick_chart). In order to do so, the historical data needs to be transformed.
 
 You will need to create a function that takes a CSV file and the desired period (window size) and outputs the result in JSON format. 
 
- 
 
 ## Input format
 
