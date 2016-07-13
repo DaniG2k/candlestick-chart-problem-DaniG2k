@@ -24,11 +24,14 @@
 
 ## Submission instructions
 
-1. Fork this repository on github
+1. Clone this repository on your local computer using `git clone` command in the terminal
 
-2. Commit and push your changes to your fork on github
-
-3. Submit a pull request to this repository
+2. Commit and push your code
+```
+$ git add .
+$ git commit -m "Your commit message"
+$ git push origin master
+```
 
 
 
