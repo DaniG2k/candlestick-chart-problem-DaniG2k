@@ -1,4 +1,4 @@
-# Candlestick chart
+# Candlestick Chart
 
 ## Introduction
 
