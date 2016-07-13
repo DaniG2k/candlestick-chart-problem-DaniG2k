@@ -24,9 +24,9 @@
 
 ## Submission instructions
 
-1. Clone this repository on your local computer using `git clone` command in the terminal
+1. Clone this repository on your local computer using the `git clone` command in the terminal.  Enter your GitHub username and password when prompted.
 ```
-$ git clone [repository]
+$ git clone https://github.com/korbitdev/candlestick-chart-problem-[your GitHub username].git
 ```
 
 2. Commit and push your code
