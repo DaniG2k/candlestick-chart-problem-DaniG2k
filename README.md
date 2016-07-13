@@ -25,6 +25,9 @@
 ## Submission instructions
 
 1. Clone this repository on your local computer using `git clone` command in the terminal
+```
+$ git clone [repository]
+```
 
 2. Commit and push your code
 ```
