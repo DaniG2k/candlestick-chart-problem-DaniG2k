@@ -36,8 +36,8 @@ class TradesFormatter
     result = []
     get_window.each do |batch, entries|
       result << {
-        'open'    => entries.first[1],
-        'close'   => entries.last[1],
+        'open'    => entries.first[1].to_f.round.to_s,
+        'close'   => entries.last[1].to_f.round.to_s,
         'high'    => max_entry(entries),
         'low'     => min_entry(entries),
         'start'   => entries.first[0].to_i,
@@ -52,14 +52,15 @@ class TradesFormatter
 
   private
     def max_entry(entries)
-      entries.max {|a, b| a[1] <=> b[1]}[1]
+      entries.max {|a, b| a[1] <=> b[1]}[1].to_f.round.to_s
     end
 
     def min_entry(entries)
-      entries.min {|a, b| a[1] <=> b[1]}[1]
+      entries.min {|a, b| a[1] <=> b[1]}[1].to_f.round.to_s
     end
 
     def avg_entries(entries)
-      (entries.map {|e| e[1].to_i}.reduce(:+) / entries.count).to_s
+      sum_entries = entries.map {|e| e[1].to_i}.reduce(:+)
+      (sum_entries / entries.count).to_f.round.to_s
     end
 end
