@@ -2,18 +2,22 @@ require 'spec_helper'
 require 'csv'
 
 RSpec.describe TradesFormatter do
-  context 'initialization' do
-    it 'takes a csv file and input window' do
-      input_csv = CSV.read('./spec/tester.csv')
-      window = 30
-      tf = TradesFormatter.new(input_csv, window)
+  before :each do
+    @input_csv = CSV.read('./spec/tester.csv')
+  end
 
-      expect(tf.input_csv). to eq(input_csv)
+  context '#initialize' do
+    it 'takes a csv file and input window' do
+      window = 30
+      tf = TradesFormatter.new(@input_csv, window)
+
+      expect(tf.input_csv). to eq(@input_csv)
       expect(tf.window_size).to eq(window)
     end
+  end
 
-    it '#get_window returns data from a given window' do
-      input_csv = CSV.read('./spec/tester.csv')
+  context '#get_window' do
+    it 'returns data from a given window' do
       # Within a day of each other
       window = 86400
 
@@ -40,9 +44,18 @@ RSpec.describe TradesFormatter do
           ["1378647310", "146000.000000000000", "0.200000000000"]]
       }
 
-      tf = TradesFormatter.new(input_csv, window)
+      tf = TradesFormatter.new(@input_csv, window)
 
       expect(tf.get_window).to eq(result)
+    end
+  end
+
+  context '#output' do
+    it 'returns an array of hashes with the desired values' do
+      window = 86400
+      tf = TradesFormatter.new(@input_csv, window)
+
+      expect(tf.output).to eq({})
     end
   end
 end

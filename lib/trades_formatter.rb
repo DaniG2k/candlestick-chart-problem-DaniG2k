@@ -32,18 +32,23 @@ class TradesFormatter
     result
   end
 
-  # def output
-  #   {
-  #     'open' => ,
-  #     'close' => ,
-  #     'high' => ,
-  #     'low' => ,
-  #     'start' => ,
-  #     'end' => ,
-  #     'average' => ,
-  #     'weighted_average' => ,
-  #     'volume' => ,
-  #
-  #   }
-  # end
+  def output
+    result = []
+    get_window.each do |batch, entries|
+      sum_entries = entries.map {|e| e[1].to_i}.reduce(:+)
+      avg = sum_entries / entries.count
+      result << {
+        'open'    => entries.first[1],
+        'close'   => entries.last[1],
+        'high'    => entries.max {|a, b| a[1] <=> b[1]}[1],
+        'low'     => entries.min {|a, b| a[1] <=> b[1]}[1],
+        'start'   => entries.first[0].to_i,
+        'end'     => entries.last[0].to_i,
+        'average' => avg.to_s
+        # 'weighted_average'  => ,
+        # 'volume'  => ,
+      }
+    end
+    result
+  end
 end
