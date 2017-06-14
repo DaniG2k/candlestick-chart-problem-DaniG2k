@@ -99,7 +99,8 @@ class TradesFormatter
       if entries.empty?
         "0.00000000"
       else
-        entries.inject(0) {|sum, entry| sum + entry[2].to_f}.to_s
+        num = entries.inject(0) {|sum, entry| sum + entry[2].to_f}
+        sprintf("%.8f", num)
       end
     end
 end

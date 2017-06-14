@@ -144,7 +144,7 @@ RSpec.describe TradesFormatter do
           "high" => "180000",
           "low" => "150000",
           "average" => "167500",
-          "volume"=>"3.74"
+          "volume"=>"3.74000000"
         },
         {
           "start" => 1378276297,
@@ -154,7 +154,7 @@ RSpec.describe TradesFormatter do
           "high" => "150000",
           "low" => "150000",
           "average" => "150000",
-          "volume"=>"0.1"
+          "volume"=>"0.10000000"
         },
         {
           "start" => 1378362697,
@@ -164,7 +164,7 @@ RSpec.describe TradesFormatter do
           "high" => "160000",
           "low" => "145000",
           "average" => "151250",
-          "volume"=>"1.5"
+          "volume"=>"1.50000000"
         },
         {
           "start" => 1378449097,
@@ -174,7 +174,7 @@ RSpec.describe TradesFormatter do
           "high" => "145000",
           "low" => "140000",
           "average" => "142500",
-          "volume"=>"0.2"
+          "volume"=>"0.20000000"
         },
         {
           "start" => 1378535497,
@@ -184,7 +184,7 @@ RSpec.describe TradesFormatter do
           "high" => "141000",
           "low" => "140000",
           "average" => "140500",
-          "volume"=>"0.6000000000000001"
+          "volume"=>"0.60000000"
         },
         {
           "start" => 1378621897,
@@ -194,7 +194,7 @@ RSpec.describe TradesFormatter do
           "high" => "160000",
           "low" => "146000",
           "average" => "153000",
-          "volume"=>"0.4"
+          "volume"=>"0.40000000"
         }
       ]
 
@@ -214,7 +214,7 @@ RSpec.describe TradesFormatter do
           "high"=>"250000",
           "low"=>"250000",
           "average"=>"250000",
-          "volume"=>"2.0"
+          "volume"=>"2.00000000"
         },
         {
           "start"=>1383038152,
@@ -224,7 +224,7 @@ RSpec.describe TradesFormatter do
           "high"=>"259000",
           "low"=>"254000",
           "average"=>"256500",
-          "volume"=>"2.0"
+          "volume"=>"2.00000000"
         },
         {
           "start"=>1383038182,
@@ -244,7 +244,7 @@ RSpec.describe TradesFormatter do
           "high"=>"251000",
           "low"=>"251000",
           "average"=>"251000",
-          "volume"=>"1.391"
+          "volume"=>"1.39100000"
         }
       ]
 
