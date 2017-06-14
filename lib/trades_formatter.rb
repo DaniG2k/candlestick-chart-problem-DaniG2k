@@ -43,9 +43,11 @@ class TradesFormatter
         'close'   => get_close(entries),
         'high'    => max_entry(entries),
         'low'     => min_entry(entries),
-        'average' => avg_entries(entries)
+        'average' => avg_entries(entries),
+        # I am not sure what I am being expected to
+        # weigh by.
         # 'weighted_average'  => ,
-        # 'volume'  => ,
+        'volume'  => get_btc_volume(entries)
       }
     end
     result
@@ -90,6 +92,14 @@ class TradesFormatter
       else
         sum_entries = entries.inject(0) {|sum, entry| sum + entry[1].to_i}
         (sum_entries / entries.count).to_f.round.to_s
+      end
+    end
+
+    def get_btc_volume(entries)
+      if entries.empty?
+        "0.00000000"
+      else
+        entries.inject(0) {|sum, entry| sum + entry[2].to_f}.to_s
       end
     end
 end
