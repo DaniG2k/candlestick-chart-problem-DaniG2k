@@ -115,6 +115,19 @@ RSpec.describe TradesFormatter do
 
       expect(tf.get_windows).to eq(result)
     end
+
+    it 'retuns an expected result' do
+      input_csv = CSV.read('./spec/tester_2.csv')
+      window = 30
+      tf = TradesFormatter.new(input_csv, window)
+      result = {
+        [1383038122, 1383038151]=>[["1383038122", "250000", "2.00000000"]],
+        [1383038152, 1383038181]=>[["1383038169", "254000", "0.09700000"], ["1383038169", "259000", "1.90300000"]],
+        [1383038182, 1383038211]=>[],
+        [1383038212, 1383038233]=>[["1383038233", "251000", "1.39100000"]]}
+
+      expect(tf.get_windows).to eq(result)
+    end
   end
 
   context '#output' do
@@ -178,6 +191,44 @@ RSpec.describe TradesFormatter do
           "average" => "153000"
         }
       ]
+
+      expect(tf.output).to eq(result)
+    end
+
+    it 'retuns an expected result' do
+      input_csv = CSV.read('./spec/tester_2.csv')
+      window = 30
+      tf = TradesFormatter.new(input_csv, window)
+      result = [
+        {"open"=>"250000",
+         "close"=>"250000",
+         "high"=>"250000",
+         "low"=>"250000",
+         "start"=>1383038122,
+         "end"=>1383038151,
+         "average"=>"250000"},
+        {"open"=>"254000",
+         "close"=>"259000",
+         "high"=>"259000",
+         "low"=>"254000",
+         "start"=>1383038152,
+         "end"=>1383038181,
+         "average"=>"256500"},
+        {"open"=>nil,
+         "close"=>nil,
+         "high"=>nil,
+         "low"=>nil,
+         "start"=>1383038182,
+         "end"=>1383038211,
+         "average"=>nil},
+        {"open"=>"251000",
+         "close"=>"251000",
+         "high"=>"251000",
+         "low"=>"251000",
+         "start"=>1383038212,
+         "end"=>1383038233,
+         "average"=>"251000"}
+       ]
 
       expect(tf.output).to eq(result)
     end
