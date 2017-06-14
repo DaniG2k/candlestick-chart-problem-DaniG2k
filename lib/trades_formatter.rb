@@ -19,11 +19,10 @@ class TradesFormatter
 
     start_and_end_windows.each do |window|
       result[window] = []
-      while !@input_csv.empty?
+      until @input_csv.empty?
         range = (window[0]..window[1])
         if range.include?(@input_csv[0][0].to_i)
           entry = @input_csv.shift
-          current_time = entry[0].to_i
           result[window] << entry
         else
           break
