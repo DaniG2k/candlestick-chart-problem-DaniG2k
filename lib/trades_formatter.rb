@@ -8,24 +8,25 @@ class TradesFormatter
     @window_size = window_size
   end
 
-  def get_window
+  def get_windows
     result = {}
-    batch = 0
+    start_time = @input_csv[0][0].to_i
+    end_time = @input_csv[-1][0].to_i
 
-    @input_csv.each do |entry|
-      new_time = Time.at(entry.first.to_i)
+    start_and_end_windows = (start_time..end_time)
+      .each_slice(@window_size)
+      .map {|slice| [slice[0], slice[-1]] }
 
-      if result.empty?
-        result[batch] = [entry]
-      else
-        start_time = Time.at(result[batch].first.first.to_i)
-        end_time = start_time + @window_size
-
-        if (start_time..end_time).include?(new_time)
-          result[batch] << entry
+    start_and_end_windows.each do |window|
+      result[window] = []
+      while !@input_csv.empty?
+        range = (window[0]..window[1])
+        if range.include?(@input_csv[0][0].to_i)
+          entry = @input_csv.shift
+          current_time = entry[0].to_i
+          result[window] << entry
         else
-          batch += 1
-          result[batch] = [entry]
+          break
         end
       end
     end
@@ -34,14 +35,14 @@ class TradesFormatter
 
   def output
     result = []
-    get_window.each do |batch, entries|
+    get_windows.each do |batch, entries|
       result << {
-        'open'    => entries.first[1].to_f.round.to_s,
-        'close'   => entries.last[1].to_f.round.to_s,
+        'open'    => get_open(entries),
+        'close'   => get_close(entries),
         'high'    => max_entry(entries),
         'low'     => min_entry(entries),
-        'start'   => entries.first[0].to_i,
-        'end'     => entries.last[0].to_i,
+        'start'   => batch[0],
+        'end'     => batch[1],
         'average' => avg_entries(entries)
         # 'weighted_average'  => ,
         # 'volume'  => ,
@@ -51,16 +52,44 @@ class TradesFormatter
   end
 
   private
+    def get_open(entries)
+      if entries.empty?
+        nil
+      else
+        entries.first[1].to_f.round.to_s
+      end
+    end
+
+    def get_close(entries)
+      if entries.empty?
+        nil
+      else
+        entries.last[1].to_f.round.to_s
+      end
+    end
+
     def max_entry(entries)
-      entries.max {|a, b| a[1] <=> b[1]}[1].to_f.round.to_s
+      if entries.empty?
+        nil
+      else
+        entries.max {|a, b| a[1] <=> b[1]}[1].to_f.round.to_s
+      end
     end
 
     def min_entry(entries)
-      entries.min {|a, b| a[1] <=> b[1]}[1].to_f.round.to_s
+      if entries.empty?
+        nil
+      else
+        entries.min {|a, b| a[1] <=> b[1]}[1].to_f.round.to_s
+      end
     end
 
     def avg_entries(entries)
-      sum_entries = entries.map {|e| e[1].to_i}.reduce(:+)
-      (sum_entries / entries.count).to_f.round.to_s
+      if entries.empty?
+        nil
+      else
+        sum_entries = entries.map {|e| e[1].to_i}.reduce(:+)
+        (sum_entries / entries.count).to_f.round.to_s
+      end
     end
 end
