@@ -52,42 +52,40 @@ class TradesFormatter
   end
 
   private
-    def get_open(entries)
+    def yield_with_entries_check(entries)
       if entries.empty?
         nil
       else
+        yield if block_given?
+      end
+    end
+ 
+    def get_open(entries)
+      yield_with_entries_check(entries) do
         entries.first[1].to_f.round.to_s
       end
     end
 
     def get_close(entries)
-      if entries.empty?
-        nil
-      else
+      yield_with_entries_check(entries) do
         entries.last[1].to_f.round.to_s
       end
     end
 
     def max_entry(entries)
-      if entries.empty?
-        nil
-      else
+      yield_with_entries_check(entries) do
         entries.max {|a, b| a[1] <=> b[1]}[1].to_f.round.to_s
       end
     end
 
     def min_entry(entries)
-      if entries.empty?
-        nil
-      else
+      yield_with_entries_check(entries) do
         entries.min {|a, b| a[1] <=> b[1]}[1].to_f.round.to_s
       end
     end
 
     def avg_entries(entries)
-      if entries.empty?
-        nil
-      else
+      yield_with_entries_check(entries) do
         sum_entries = entries.inject(0) {|sum, entry| sum + entry[1].to_i}
         (sum_entries / entries.count).to_f.round.to_s
       end
