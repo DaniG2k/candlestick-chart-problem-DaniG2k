@@ -116,7 +116,7 @@ RSpec.describe TradesFormatter do
       expect(tf.get_windows).to eq(result)
     end
 
-    it 'retuns an expected result' do
+    it 'retuns an empty array when no trades were performed' do
       input_csv = CSV.read('./spec/tester_2.csv')
       window = 30
       tf = TradesFormatter.new(input_csv, window)
@@ -195,7 +195,7 @@ RSpec.describe TradesFormatter do
       expect(tf.output).to eq(result)
     end
 
-    it 'retuns an expected result' do
+    it 'retuns nil values when no trades were performed' do
       input_csv = CSV.read('./spec/tester_2.csv')
       window = 30
       tf = TradesFormatter.new(input_csv, window)
