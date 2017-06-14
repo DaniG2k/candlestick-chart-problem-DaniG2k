@@ -117,14 +117,69 @@ RSpec.describe TradesFormatter do
     end
   end
 
-  # context '#output' do
-  #   it 'returns an array of hashes with the desired values' do
-  #     window = 86400
-  #     tf = TradesFormatter.new(@input_csv, window)
-  #
-  #     result = [{"open"=>"160000", "close"=>"180000", "high"=>"180000", "low"=>"150000", "start"=>1378189897, "end"=>1378271222, "average"=>"167500"}, {"open"=>"150000", "close"=>"160000", "high"=>"160000", "low"=>"150000", "start"=>1378343798, "end"=>1378381752, "average"=>"152500"}, {"open"=>"145000", "close"=>"140000", "high"=>"145000", "low"=>"140000", "start"=>1378441918, "end"=>1378514709, "average"=>"143333"}, {"open"=>"140000", "close"=>"160000", "high"=>"160000", "low"=>"140000", "start"=>1378552766, "end"=>1378627740, "average"=>"147000"}, {"open"=>"146000", "close"=>"146000", "high"=>"146000", "low"=>"146000", "start"=>1378647310, "end"=>1378647310, "average"=>"146000"}]
-  #
-  #     expect(tf.output).to eq(result)
-  #   end
-  # end
+  context '#output' do
+    it 'returns an array of hashes with the desired values' do
+      window = 86400
+      tf = TradesFormatter.new(@input_csv, window)
+
+      result = [
+        {
+          "open" => "160000",
+          "close" => "180000",
+          "high" => "180000",
+          "low" => "150000",
+          "start" => 1378189897,
+          "end" => 1378276296,
+          "average" => "167500"
+        },
+        {
+          "open" => "150000",
+          "close" => "150000",
+          "high" => "150000",
+          "low" => "150000",
+          "start" => 1378276297,
+          "end" => 1378362696,
+          "average" => "150000"
+        },
+        {
+          "open" => "150000",
+          "close" => "145000",
+          "high" => "160000",
+          "low" => "145000",
+          "start" => 1378362697,
+          "end" => 1378449096,
+          "average" => "151250"
+        },
+        {
+          "open" => "145000",
+          "close" => "140000",
+          "high" => "145000",
+          "low" => "140000",
+          "start" => 1378449097,
+          "end" => 1378535496,
+          "average" => "142500"
+        },
+        {
+          "open" => "140000",
+          "close" => "141000",
+          "high" => "141000",
+          "low" => "140000",
+          "start" => 1378535497,
+          "end" => 1378621896,
+          "average" => "140500"
+        },
+        {
+          "open" => "160000",
+          "close" => "146000",
+          "high" => "160000",
+          "low" => "146000",
+          "start" => 1378621897,
+          "end" => 1378647310,
+          "average" => "153000"
+        }
+      ]
+
+      expect(tf.output).to eq(result)
+    end
+  end
 end
