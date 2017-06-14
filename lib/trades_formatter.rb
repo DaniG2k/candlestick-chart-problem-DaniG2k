@@ -37,12 +37,12 @@ class TradesFormatter
     result = []
     get_windows.each do |batch, entries|
       result << {
+        'start'   => batch[0],
+        'end'     => batch[1],
         'open'    => get_open(entries),
         'close'   => get_close(entries),
         'high'    => max_entry(entries),
         'low'     => min_entry(entries),
-        'start'   => batch[0],
-        'end'     => batch[1],
         'average' => avg_entries(entries)
         # 'weighted_average'  => ,
         # 'volume'  => ,
