@@ -88,7 +88,7 @@ class TradesFormatter
       if entries.empty?
         nil
       else
-        sum_entries = entries.map {|e| e[1].to_i}.reduce(:+)
+        sum_entries = entries.inject(0) {|sum, entry| sum + entry[1].to_i}
         (sum_entries / entries.count).to_f.round.to_s
       end
     end
