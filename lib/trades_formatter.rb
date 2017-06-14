@@ -22,8 +22,7 @@ class TradesFormatter
       until @input_csv.empty?
         range = (window[0]..window[1])
         if range.include?(@input_csv[0][0].to_i)
-          entry = @input_csv.shift
-          result[window] << entry
+          result[window] << @input_csv.shift
         else
           break
         end
@@ -95,11 +94,11 @@ class TradesFormatter
     end
 
     def get_btc_volume(entries)
-      if entries.empty?
-        "0.00000000"
+      num = if entries.empty?
+        0
       else
-        num = entries.inject(0) {|sum, entry| sum + entry[2].to_f}
-        sprintf("%.8f", num)
+        entries.inject(0) {|sum, entry| sum + entry[2].to_f}
       end
+      sprintf("%.8f", num)
     end
 end
