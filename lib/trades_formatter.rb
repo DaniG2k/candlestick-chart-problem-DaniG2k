@@ -42,8 +42,6 @@ class TradesFormatter
         'high'    => max_entry(entries),
         'low'     => min_entry(entries),
         'average' => avg_entries(entries),
-        # I am not sure what I am being expected to
-        # weigh by.
         # 'weighted_average'  => ,
         'volume'  => get_btc_volume(entries)
       }
