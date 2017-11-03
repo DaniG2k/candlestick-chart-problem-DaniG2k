@@ -149,5 +149,3 @@ The output should be a list containing:
   "volume": "1.39100000"
 }]
 ```
-
-# candlestick-chart-problem-DaniG2k
