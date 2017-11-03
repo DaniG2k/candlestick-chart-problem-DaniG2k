@@ -9,7 +9,7 @@ You will need to create a function that takes a CSV file and the desired period 
 
 ### Input format
 
-CSV file [trades.csv](/DaniG2k/candlestick-chart-problem-DaniG2k/blob/master/lib/trades.csv) containing *N* trades in the following format:
+CSV file [trades.csv](/lib/trades.csv) containing *N* trades in the following format:
 
 `timestamp,price,size`
 
