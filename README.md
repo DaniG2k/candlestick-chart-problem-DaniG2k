@@ -1,43 +1,5 @@
 # Candlestick Chart
 
-## Introduction
-
-1. This is both a programming and a design test. Note down the assumptions you make.
-
-2. You are free to choose any language from the list and code
-
-    * Java
-
-    * Javascript
-
-    * Ruby
-
-    * Scala
-
-    * C/C++
-
-    * Python
-
-3. It is okay to use reference language documentation or use an IDE that has code completion features. However it is not acceptable to consult/copy code from any source including a website, book, or friend/colleague to complete these tests.
-
-
-
-## Submission instructions
-
-1. Clone this repository on your local computer using the `git clone` command in the terminal.  Enter your GitHub username and password when prompted.
-```
-$ git clone https://github.com/korbitdev/candlestick-chart-problem-[your GitHub username].git
-```
-
-2. Commit and push your code
-```
-$ git add .
-$ git commit -m "Your commit message"
-$ git push origin master
-```
-
-
-
 ## Problem description
 
 Given a CSV (comma-separated values) containing historical Bitcoin trades, we want to represent the trades in a [candlestick chart](https://en.wikipedia.org/wiki/Candlestick_chart). In order to do so, the historical data needs to be transformed.
@@ -187,8 +149,5 @@ The output should be a list containing:
   "volume": "1.39100000"
 }]
 ```
-
-
- 
 
 # candlestick-chart-problem-DaniG2k
